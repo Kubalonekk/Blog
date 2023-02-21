@@ -144,7 +144,7 @@ def search_results(request):
         post_list = Post.objects.filter(
             title__icontains=searched, published=True).order_by('-creation_date')
     else:
-        post_list = Post.objects.all()
+        post_list = Post.objects.all().order_by('-creation_date')
     context = {
         'post_list': post_list,
     }
