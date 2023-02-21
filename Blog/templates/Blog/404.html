@@ -1,0 +1,31 @@
+{% extends 'Blog/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center">
+            <h1 class="display-1 fw-bold">404</h1>
+            <p class="fs-3"> <span class="text-danger">Opps!</span> Nie znaleziono strony</p>
+            <p class="lead">
+                Strona, której szukasz, nie istnieje.
+              </p>
+            <a href="{% url 'index' %}" class="btn btn-primary">Home</a>
+        </div>
+    </div>
+  
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<img src="{% static 'images/cringe.jpg' %}"> {% endcomment %}
+
+

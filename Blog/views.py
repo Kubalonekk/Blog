@@ -135,7 +135,7 @@ def single_post(request, pk):
     }
 
     return render(request, 'Blog/single_post.html', context)
-#blah
+
 
 def search_results(request):
 
@@ -247,6 +247,20 @@ def edit_post_images(request, pk):
     }
 
     return render(request, 'Blog/edit_post_images.html', context)
+
+
+
+
+@user_passes_test(lambda u: u.groups.filter(Q(name='Content creators',) | Q(name='Moderators',) ).exists())
+def delete_post_image(request, pk):
+    image = ImagePost.objects.get(id=pk)
+    image.delete()
+    messages.success(request, 'Pomyślnie usunięto zdjęcie')
+    return redirect('edit_post_images', image.post.id)
+
+
+def custom_page_not_found_view(request, exception):
+    return render(request, "Blog/404.html", {})
 
 
 

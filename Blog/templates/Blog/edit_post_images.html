@@ -33,7 +33,7 @@
             {% else%}
             {% endif %}
             <p class="card-text">
-              <button type="button" class="btn btn-outline-danger">Usuń</button>
+              <a href="{% url 'delete_post_image' image.id %}"<button type="button" class="btn btn-outline-danger">Usuń</button></a>
             </p>
           </div>
         </div>
