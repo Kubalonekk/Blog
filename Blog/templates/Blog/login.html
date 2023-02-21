@@ -1,0 +1,50 @@
+{% extends 'Blog/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Witaj na moim blogu!</h1>
+      <p class="col-lg-10 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ipsum dolor. Donec pellentesque ultricies venenatis. Praesent ultricies, magna at auctor aliquet, dolor massa vehicula arcu, vitae semper risus mi et sapien.</p>
+    </div>
+    
+    <div class=" col-md-10 mx-auto col-lg-5">
+      <form method="POST" class="p-4 p-md-5 border rounded-3 bg-dark">
+        {% csrf_token %}
+        {% language 'pl' %}
+        {{ form|as_crispy_errors}}
+        <div class="form-floating mb-3">
+          {{ form.username|as_crispy_field}}
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.password|as_crispy_field}}
+        </div>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Zapamiętaj mnie
+          </label>
+        </div>
+        {% endlanguage %}
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Zaloguj się</button>
+        <hr class="my-4">
+        <small class="text-muted">Jeśli nie posiadsz konta <a href="{% url 'register'%}">Zarejestruj się</a></small>
+        
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<img src="{% static 'images/cringe.jpg' %}"> {% endcomment %}
+
+

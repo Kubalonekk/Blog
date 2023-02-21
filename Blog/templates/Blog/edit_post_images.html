@@ -1,0 +1,52 @@
+{% extends 'Blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+  <form action="{% url 'edit_post_images' post.id  %}"  enctype="multipart/form-data" method="post" class="form-post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="form-post">Główny obraz</label>
+        <input type="file" name="main_image" class="form-control" id="form-post">
+    </div>
+    <div class="form-group">
+        <label for="form-post">Galeria obrazów</label>
+        <input type="file" name="images" class="form-control" id="form-post" multiple>
+    </div>
+    <button class="btn btn-primary btn-md my-0 p mt-2" type='submit'>Dodaj</button>
+</form>
+
+  <h1>Aktywne zdjęcia</h1>
+  <div class="row row-cols-3 g-3 mt-1 ">
+      {% for image in post_images %}
+      <div class="col ">
+        <div class="card ">
+          <a href="">
+          <img src="{{ image.image.url }}" width="286" height="180" class="card-img-top"
+            alt="" />
+          </a>
+          <div class="card-body">
+            {% if image.main_image == True %}
+            <h5 class="card-title">Zdjęcię główne
+            </h5>
+            {% else%}
+            {% endif %}
+            <p class="card-text">
+              <button type="button" class="btn btn-outline-danger">Usuń</button>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+{% comment %} <img src="{% static 'images/cringe.jpg' %}"> {% endcomment %} 
+
+
+width="250" height="200"

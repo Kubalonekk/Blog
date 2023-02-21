@@ -1,0 +1,92 @@
+{% extends 'Blog/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url 'CreatePost'%}"><button type="button" class="btn btn-outline-success">Dodaj nowy post</button>
+      </a>
+    </li>
+  </ul>
+  <form role="search" method="POST" action="{% url 'dashboard' %}">
+    {% csrf_token %}
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label class="mt-2" >Data od</label>
+        <input class="form-control " name="start"  type="date" placeholder="" aria-label="Search" required >
+      </div>
+      <div class="form-group col-md-3">
+        <label class="mt-2" >Data do</label>
+        <input class="form-control" name="end"  type="date" placeholder="" aria-label="Search" required>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="mt-2" >Tytuł</label>
+        <input class="form-control" name="title"  type="search" placeholder="Podaj tytuł" aria-label="Search">
+      </div>
+      <div class="form-group col-md-3">
+        <label class="mt-2" >Opublikowany</label>
+      <select  class="form-control" name="published" id="published">
+        <option value="empty">Obublikowany</option>
+        <option value="True">Tak</option>
+        <option value="False">Nie</option>
+      </div>
+      </select>
+      </div>
+    </div>
+    <button class="btn btn-outline-primary mt-2" type='submit'>Szukaj</button>
+  </form>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th class="col-md-6"scope="">Tytuł</th>
+        <th class="col-md-2" scope="col">Data</th>
+        <th class="col-md-2" scope="col">Opublikowany</th>
+        <th class="col-md-1" scope="col">Wyświetlenia</th>
+        <th class="col-md-1" scope="col">Usuń</th>
+        <th class="col-md-1" scope="col">Edytuj</th>
+
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        {% language 'pl' %}     
+        <th scope="row"><a href="{% url 'single_post' post.id %}">{{post.id}}</a></th>
+        <td><a href="{% url 'single_post' post.id %}">{{post.title}}</td></a>
+        <td>{{post.creation_date}}</td>
+        {% if post.published == True %}   
+        <td class="text-center"><i class="fa-sharp fa-solid fa-square-check"></i></td>
+        {% else %}
+        <td class="text-center"><i class="fa-solid fa-square-xmark"></i></td>
+        {% endif %}
+        <td class="text-center">{{post.viewCount}}</td>
+        <td><a href="{% url 'delete_post' post.id %}"><button type="button" class="btn btn-outline-danger">Usuń</button></a></td>
+        <td><a href="{% url 'edit_post' post.id %}"><button type="button" class="btn btn-outline-primary">Edytuj</button></a>
+        </td>
+        {% endlanguage %}
+   
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<img src="{% static 'images/cringe.jpg' %}"> {% endcomment %}
+
+

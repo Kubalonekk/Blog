@@ -1,0 +1,44 @@
+{% extends 'Blog/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    
+    <div class="row row-cols-3 g-3 mt-1 ">
+        {% for post in post_list %}
+        <div class="col ">
+          <div class="card ">
+            <a href="{% url 'single_post' post.id %}">
+            {% for photo in post.Images.all %}
+            {% if photo.main_image == True %}
+            <img src="{{ photo.image.url }}" width="286" height="180" class="card-img-top"
+              alt="Hollywood Sign on The Hill" />
+            {% endif %}
+            {% endfor %}
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="card-text">
+                {{ post.text|truncatechars:44 }}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<img src="{% static 'images/cringe.jpg' %}"> {% endcomment %}
+
+

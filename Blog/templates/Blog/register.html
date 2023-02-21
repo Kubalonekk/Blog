@@ -1,0 +1,53 @@
+{% extends 'Blog/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-center">
+    <form action="" method="post">
+        {% csrf_token %}
+        {% language 'pl' %}
+        <div class="row">
+            <div class="form-group col-md-4">
+                {{ form.username| as_crispy_field}}
+            </div>
+            <div class="form-group col-md-4">
+                {{ form.email| as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                {{ form.first_name| as_crispy_field}}
+            </div>
+            <div class="form-group col-md-4">
+                {{ form.last_name| as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                {{ form.password1| as_crispy_field}}
+            </div>
+            <div class="form-group col-md-4">
+                {{ form.password2| as_crispy_field}}
+            </div>
+        </div>
+
+        {% endlanguage %}
+        <button class="btn btn-outline-primary" type='submit'>Zarejestruj się</button>
+    </form>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<img src="{% static 'images/cringe.jpg' %}"> {% endcomment %}
+
+

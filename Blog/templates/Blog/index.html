@@ -1,0 +1,80 @@
+{% extends 'Blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      {% for post in posts %}
+      {% if forloop.first %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}" class="active" aria-current="true" aria-label="Slide 1"></button>
+      {% else %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{forloop.counter0}} aria-label="Slide 2"></button>
+      {% endif %}
+      {% endfor %}
+      
+    </div>
+    <div class="carousel-inner">
+      {% for post in posts %}
+      {% if forloop.first %}
+       <div class="carousel-item active">
+      {% else %}
+      <div class="carousel-item">
+      {% endif %}
+        {% for photo in post.Images.all %}
+            {% if photo.main_image == True %}
+        <a href="{% url 'single_post' post.id %}">   
+          <img src="{{photo.image.url}}" class="d-block w-100 " alt="...">
+        </a>
+        {% endif %}
+        {% endfor %}
+
+        <div class="carousel-caption d-none d-md-block">
+            <h1 class="display-2">{{ post.title }}</h1>
+            <p></p>
+          </div>
+      </div>
+      {% endfor %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+{% comment %} <div class="b-example-divider"></div>
+
+  <div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Dark mode hero</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>
+          <button type="button" class="btn btn-outline-light btn-lg px-4">Secondary</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-example-divider mb-0"></div>
+
+   {% endcomment %}
+
+   
+  
+
+
+{% endblock %}
+
+
+
+{% comment %} <img src="{% static 'images/cringe.jpg' %}"> {% endcomment %} 
+
+

@@ -1,0 +1,8 @@
+#carouselExampleIndicators .carousel-item img{
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height: 70vh;
+    padding-top: 10px;
+}
+

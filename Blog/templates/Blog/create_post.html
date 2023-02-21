@@ -1,0 +1,43 @@
+{% extends 'Blog/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'CreatePost' %}"  enctype="multipart/form-data" method="post" class="form-post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="note-title">Tytuł</label>
+            <input type="text" name="title" class="form-control" id="form-post" placeholder="Podaj tytuł" required>
+        </div>
+        <div class="form-group">
+            <label for="note-title">Opis</label>
+            <textarea type="text" name="text" rows="8" class="form-control" id="form-post" placeholder="Podaj opis" required></textarea>
+        </div>
+        <div class="form-group">
+        <label class="mt-2" >Opublikuj natychmiast</label>
+            <select class="form-control" name="published" id="published">
+                <option value="False">Nie</option>
+                <option value="True">Tak</option>   
+        </div>
+        <div class="form-group">
+            <label for="form-post">Główny obraz</label>
+            <input type="file" name="main_image" class="form-control mt-2" id="form-post" required>
+        </div>
+        <div class="form-group">
+            <label for="form-post">Galeria obrazów</label>
+            <input type="file" name="images" class="form-control" id="form-post" multiple>
+        </div>
+        <button class="btn btn-outline-success mt-2" type='submit'>Dodaj post</button>
+    </form>
+    </div>
+{% endblock %}
+
+
+
+
+
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<img src="{% static 'images/cringe.jpg' %}"> {% endcomment %}
+
+
