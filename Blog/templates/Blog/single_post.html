@@ -31,9 +31,21 @@
                             <p class="fs-5 mb-4">{{post.text}}</p>
                         </section>
                     </article>
+                    <div class="row row-cols-3 g-3 mt-1 ">
+                        {% for image in post_images %}
+                        <div class="col ">
+                          <div class="card ">
+                            <a href="{{image.image.url}}">
+                            <img src="{{ image.image.url }}" width="286" height="180" class="card-img-top mt-1"
+                              alt="" />     
+                            </a>  
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                     
                     <!-- Comments section-->
-                    <section class="mb-5">
+                    <section class="mb-5 mt-4">
                         <div class="card bg-bg-dark">
                             <div class="card-body">
                                 <!-- Comment form-->

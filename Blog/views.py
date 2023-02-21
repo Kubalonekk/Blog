@@ -106,6 +106,7 @@ def delete_comment(request, pk):
 
 def single_post(request, pk):
     post = Post.objects.get(id=pk)
+    post_images = ImagePost.objects.filter(post=post, main_image=False)
     comments = PostComment.objects.filter(post=post).order_by('-creation_date')
     post.viewCount += 1
     post.save()
@@ -130,6 +131,7 @@ def single_post(request, pk):
     context = {
         'post': post,
         'comments': comments,
+        'post_images': post_images,
     }
 
     return render(request, 'Blog/single_post.html', context)
