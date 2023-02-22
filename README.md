@@ -1,6 +1,6 @@
 # Blog
 > Blog is an application that allows creators to share their posts with other users
-<!-- > Live demo [_here_](https://www.example.com).  -->
+Live demo [_here_](https://kubalonek99.usermd.net/).
 
 ## Table of Contents
 * [General Info](#general-information)
