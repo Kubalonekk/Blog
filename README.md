@@ -1,6 +1,6 @@
 # Blog
 > Blog is an application that allows creators to share their posts with other users
-<!-- > Live demo [_here_](https://www.example.com).  -->
+Live demo [_here_](https://kubalonek99.usermd.net/).
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -11,7 +11,9 @@
 
 
 ## General Information
-- The application was created in order to gain experience 
+Regular user can only create an account and comment on posts.
+A user in the "Content creators" group can manage the content of the site.
+The application was created in order to gain experience 
 
 
 
