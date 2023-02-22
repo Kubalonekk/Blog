@@ -11,7 +11,9 @@ Live demo [_here_](https://kubalonek99.usermd.net/).
 
 
 ## General Information
-- The application was created in order to gain experience 
+Regular user can only create an account and comment on posts.
+A user in the "Content creators" group can manage the content of the site.
+The application was created in order to gain experience 
 
 
 
